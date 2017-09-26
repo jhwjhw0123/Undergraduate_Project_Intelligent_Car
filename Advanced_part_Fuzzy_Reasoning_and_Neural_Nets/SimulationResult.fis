@@ -1,0 +1,63 @@
+[System]
+Name='SimulationResult'
+Type='mamdani'
+Version=2.0
+NumInputs=2
+NumOutputs=1
+NumRules=15
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='Speed'
+Range=[10 255]
+NumMFs=5
+MF1='low':'trimf',[10 10 63]
+MF2='mid-low':'trimf',[0 64 127.5]
+MF3='mid':'trimf',[64 127.5 191.25]
+MF4='mid-high':'trimf',[127.5 191.25 255]
+MF5='high':'trimf',[191.25 255 255]
+
+[Input2]
+Name='Distance'
+Range=[100 1500]
+NumMFs=3
+MF1='close':'trimf',[100 100 850]
+MF2='mid':'trimf',[100 750 1500]
+MF3='far':'trimf',[650 1500 1500]
+
+[Output1]
+Name='AdjustValue'
+Range=[-100 100]
+NumMFs=11
+MF1='veryfar-dec':'trimf',[-100 -100 -70]
+MF2='far-dec':'trimf',[-90 -80 -60]
+MF3='dec':'trimf',[-80 -60 -40]
+MF4='mid-dec':'trimf',[-60 -40 -20]
+MF5='slight-dec':'trimf',[-40 -20 0]
+MF6='stable':'trimf',[-20 0 20]
+MF7='slight-inc':'trimf',[0 20 40]
+MF8='mid-inc':'trimf',[20 40 60]
+MF9='inc':'trimf',[40 60 80]
+MF10='far-inc':'trimf',[60 80 90]
+MF11='veryfar-inc':'trimf',[70 100 100]
+
+[Rules]
+1 3, 11 (1) : 1
+1 2, 10 (1) : 1
+1 1, 7 (1) : 1
+2 3, 9 (1) : 1
+2 2, 8 (1) : 1
+2 1, 6 (1) : 1
+3 3, 8 (1) : 1
+3 2, 6 (1) : 1
+3 1, 4 (1) : 1
+4 3, 5 (1) : 1
+4 2, 3 (1) : 1
+4 1, 2 (1) : 1
+5 3, 4 (1) : 1
+5 2, 2 (1) : 1
+5 1, 1 (1) : 1
